@@ -1,3 +1,6 @@
+using SmartUnitCalculator.Database;
+using SmartUnitCalculator.Database.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

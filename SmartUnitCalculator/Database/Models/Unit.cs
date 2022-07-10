@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace SmartUnitCalculator.Database.Models;
+﻿namespace SmartUnitCalculator.Database.Models;
 public class Unit
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Symbol { get; set; }
     public UnitType Type { get; set; }

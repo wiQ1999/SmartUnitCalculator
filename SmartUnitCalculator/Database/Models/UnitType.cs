@@ -1,7 +1,9 @@
-﻿namespace SmartUnitCalculator.Database.Models;
-public enum UnitType
+﻿namespace SmartUnitCalculator.Database.Models
 {
-    Time,
-    Weight,
-    Length
+    public enum UnitType : int
+    {
+        Time = 0,
+        Weight = 1,
+        Length = 2
+    }
 }

@@ -1,9 +1,8 @@
-﻿namespace SmartUnitCalculator.Database.Models
+﻿namespace SmartUnitCalculator.Database.Models;
+public class Calculation
 {
-    public class Calculation
-    {
-        public Unit BaseUnit { get; set; }
-        public Unit CalculatedUnit { get; set; }
-        public decimal Multiplier { get; set; }
-    }
+    public int Id { get; set; }
+    public Unit BaseUnit { get; set; }
+    public Unit ResultUnit { get; set; }
+    public decimal Multiplier { get; set; }
 }
