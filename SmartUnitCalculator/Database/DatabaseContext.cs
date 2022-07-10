@@ -28,7 +28,7 @@ public class DatabaseContext : DbContext
             calculation.HasKey(c => c.Id);
             calculation.HasOne(c => c.BaseUnit).WithMany(u => u.Calculations).OnDelete(DeleteBehavior.Cascade);
             calculation.HasOne(c => c.ResultUnit).WithMany().OnDelete(DeleteBehavior.Restrict);
-            calculation.Property(c => c.Multiplier).HasPrecision(38, 38);
+            calculation.Property(c => c.Multiplier).HasPrecision(38, 38).IsRequired(false);
         });
 
         modelBuilder.Entity<History>(history =>
@@ -36,7 +36,6 @@ public class DatabaseContext : DbContext
             history.HasKey(h => h.Id);
             history.HasOne(h => h.Calculation).WithMany().OnDelete(DeleteBehavior.Restrict).IsRequired(false);
             history.Property(h => h.BaseValue).HasPrecision(38, 38);
-            history.Property(h => h.ResultValue).HasPrecision(38, 38);
             history.Property(h => h.Created).HasDefaultValueSql("getdate()");
         });
     }

@@ -14,23 +14,23 @@ namespace SmartUnitCalculator.Controllers
         {
             _logger = logger;
 
-        //    using (var context = new DatabaseContext())
-        //    {
-        //        //var godz = new Unit() { Name = "Godzina", Symbol = "Godz", Type = UnitType.Time };
-        //        //context.Units.Add(godz);
-        //        //context.SaveChanges();
-        //        //var min = new Unit() { Name = "Minuta", Symbol = "Min", Type = UnitType.Time };
-        //        //context.Units.Add(min);
-        //        //context.SaveChanges();
-        //        var godz = context.Units.First(u => u.Id == 3);
-        //        var min = context.Units.First(u => u.Id == 4);
-        //        var calculation = new Calculation() { BaseUnit = godz, ResultUnit = min, Multiplier = 60m };
-        //        context.Calculations.Add(calculation);
-        //        context.SaveChanges();
-        //        var history = new History() { Calculation = calculation, BaseValue = 4.5m, ResultValue = 270m };
-        //        context.History.Add(history);
-        //        context.SaveChanges();
-        //    }
+            using (var context = new DatabaseContext())
+            {
+                //var godz = new Unit() { Name = "Godzina", Symbol = "Godz", Type = UnitType.Time };
+                //context.Units.Add(godz);
+                //context.SaveChanges();
+                //var min = new Unit() { Name = "Minuta", Symbol = "Min", Type = UnitType.Time };
+                //context.Units.Add(min);
+                //context.SaveChanges();
+                var godz = context.Units.First(u => u.Id == 3);
+                var min = context.Units.First(u => u.Id == 4);
+                var calculation = new Calculation() { BaseUnit = godz, ResultUnit = min, Multiplier = 60.0m };
+                context.Calculations.Add(calculation);
+                context.SaveChanges();
+                var history = new History() { Calculation = calculation, BaseValue = 4.5m };
+                context.History.Add(history);
+                context.SaveChanges();
+            }
         }
 
         public IActionResult Index()

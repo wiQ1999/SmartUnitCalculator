@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartUnitCalculator.Database;
 
@@ -11,9 +12,10 @@ using SmartUnitCalculator.Database;
 namespace SmartUnitCalculator.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220710125550_RemoveResultValueFromHistoryTable")]
+    partial class RemoveResultValueFromHistoryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace SmartUnitCalculator.Migrations
                     b.Property<int>("BaseUnitId")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("Multiplier")
+                    b.Property<decimal>("Multiplier")
                         .HasPrecision(38, 38)
                         .HasColumnType("decimal(38,38)");
 
