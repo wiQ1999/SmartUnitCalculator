@@ -1,9 +1,9 @@
-﻿namespace SmartUnitCalculator.Database.Models
+﻿namespace SmartUnitCalculator.Database.Models;
+public class UnitType
 {
-    public enum UnitType : int
-    {
-        Time = 0,
-        Weight = 1,
-        Length = 2
-    }
+    public string? Name { get; set; }
+    public int Priority { get; set; }
+
+    public override string ToString()
+        => Name;
 }
