@@ -71,7 +71,8 @@ public class DatabaseSeeder
         _modelBuilder.Entity<History>().HasData(
             new History() { Id = 1, BaseUnitId = 3, BaseValue = 25m, ResultUnitId = 5, ResultValue = 0.00025m, Created = new DateTime(2022, 7, 2, 12, 51, 2) },
             new History() { Id = 2, BaseUnitId = 3, BaseValue = 25m, ResultUnitId = 4, ResultValue = 0.25m, Created = new DateTime(2022, 7, 2, 12, 51, 59) },
-            new History() { Id = 3, BaseUnitId = 4, BaseValue = 1m, ResultUnitId = 2, ResultValue = 1_000m, Created = new DateTime(2022, 7, 3, 9, 30, 51) }
+            new History() { Id = 3, BaseUnitId = 4, BaseValue = 1m, ResultUnitId = 2, ResultValue = 1_000m, Created = new DateTime(2022, 7, 3, 9, 30, 51) },
+            new History() { Id = 3, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 4, 21, 11, 21) }
         );
     }
 }
