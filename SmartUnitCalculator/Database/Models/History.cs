@@ -2,7 +2,11 @@
 public class History
 {
     public int Id { get; set; }
-    public Calculation Calculation { get; set; }
+    public int BaseUnitId { get; set; }
+    public Unit? BaseUnit { get; set; }
     public decimal BaseValue { get; set; }
+    public int ResultUnitId { get; set; }
+    public Unit? ResultUnit { get; set; }
+    public decimal ResultValue { get; set; }
     public DateTime Created { get; set; }
 }

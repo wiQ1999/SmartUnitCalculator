@@ -1,10 +1,13 @@
+using Microsoft.EntityFrameworkCore;
 using SmartUnitCalculator.Database;
-using SmartUnitCalculator.Database.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DatabaseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SUCDB_W")
+    ?? throw new InvalidOperationException("Connection string not found.")));
 
 var app = builder.Build();
 

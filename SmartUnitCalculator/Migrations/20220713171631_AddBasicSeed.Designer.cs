@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartUnitCalculator.Database;
 
@@ -11,9 +12,10 @@ using SmartUnitCalculator.Database;
 namespace SmartUnitCalculator.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220713171631_AddBasicSeed")]
+    partial class AddBasicSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,148 +49,6 @@ namespace SmartUnitCalculator.Migrations
                     b.HasIndex("ResultUnitId");
 
                     b.ToTable("Calculations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BaseUnitId = 1,
-                            Multiplier = 0.001m,
-                            ResultUnitId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BaseUnitId = 1,
-                            Multiplier = 0.0001m,
-                            ResultUnitId = 3
-                        },
-                        new
-                        {
-                            Id = 3,
-                            BaseUnitId = 1,
-                            Multiplier = 0.000001m,
-                            ResultUnitId = 4
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BaseUnitId = 1,
-                            Multiplier = 0.000000001m,
-                            ResultUnitId = 5
-                        },
-                        new
-                        {
-                            Id = 5,
-                            BaseUnitId = 2,
-                            Multiplier = 1000m,
-                            ResultUnitId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            BaseUnitId = 2,
-                            Multiplier = 0.1m,
-                            ResultUnitId = 3
-                        },
-                        new
-                        {
-                            Id = 7,
-                            BaseUnitId = 2,
-                            Multiplier = 0.001m,
-                            ResultUnitId = 4
-                        },
-                        new
-                        {
-                            Id = 8,
-                            BaseUnitId = 2,
-                            Multiplier = 0.000001m,
-                            ResultUnitId = 5
-                        },
-                        new
-                        {
-                            Id = 9,
-                            BaseUnitId = 3,
-                            Multiplier = 10000m,
-                            ResultUnitId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            BaseUnitId = 3,
-                            Multiplier = 10m,
-                            ResultUnitId = 2
-                        },
-                        new
-                        {
-                            Id = 11,
-                            BaseUnitId = 3,
-                            Multiplier = 0.01m,
-                            ResultUnitId = 4
-                        },
-                        new
-                        {
-                            Id = 12,
-                            BaseUnitId = 3,
-                            Multiplier = 0.00001m,
-                            ResultUnitId = 5
-                        },
-                        new
-                        {
-                            Id = 13,
-                            BaseUnitId = 4,
-                            Multiplier = 1000000m,
-                            ResultUnitId = 1
-                        },
-                        new
-                        {
-                            Id = 14,
-                            BaseUnitId = 4,
-                            Multiplier = 1000m,
-                            ResultUnitId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
-                            BaseUnitId = 4,
-                            Multiplier = 100m,
-                            ResultUnitId = 3
-                        },
-                        new
-                        {
-                            Id = 16,
-                            BaseUnitId = 4,
-                            Multiplier = 0.001m,
-                            ResultUnitId = 5
-                        },
-                        new
-                        {
-                            Id = 17,
-                            BaseUnitId = 5,
-                            Multiplier = 1000000000m,
-                            ResultUnitId = 1
-                        },
-                        new
-                        {
-                            Id = 18,
-                            BaseUnitId = 5,
-                            Multiplier = 1000000m,
-                            ResultUnitId = 2
-                        },
-                        new
-                        {
-                            Id = 19,
-                            BaseUnitId = 5,
-                            Multiplier = 100000m,
-                            ResultUnitId = 3
-                        },
-                        new
-                        {
-                            Id = 20,
-                            BaseUnitId = 5,
-                            Multiplier = 1000m,
-                            ResultUnitId = 4
-                        });
                 });
 
             modelBuilder.Entity("SmartUnitCalculator.Database.Models.History", b =>
@@ -225,35 +85,6 @@ namespace SmartUnitCalculator.Migrations
                     b.HasIndex("ResultUnitId");
 
                     b.ToTable("History");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BaseUnitId = 3,
-                            BaseValue = 25m,
-                            Created = new DateTime(2022, 7, 2, 12, 51, 2, 0, DateTimeKind.Unspecified),
-                            ResultUnitId = 5,
-                            ResultValue = 0.00025m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BaseUnitId = 3,
-                            BaseValue = 25m,
-                            Created = new DateTime(2022, 7, 2, 12, 51, 59, 0, DateTimeKind.Unspecified),
-                            ResultUnitId = 4,
-                            ResultValue = 0.25m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            BaseUnitId = 4,
-                            BaseValue = 1m,
-                            Created = new DateTime(2022, 7, 3, 9, 30, 51, 0, DateTimeKind.Unspecified),
-                            ResultUnitId = 2,
-                            ResultValue = 1000m
-                        });
                 });
 
             modelBuilder.Entity("SmartUnitCalculator.Database.Models.Unit", b =>
@@ -389,70 +220,6 @@ namespace SmartUnitCalculator.Migrations
                             Priority = 30,
                             Symbol = "l",
                             TypeName = "Objętość"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "Kelwin",
-                            Priority = 10,
-                            Symbol = "K",
-                            TypeName = "Temperatura"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "Celsjusz",
-                            Priority = 20,
-                            Symbol = "C",
-                            TypeName = "Temperatura"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Name = "Fahrenheit",
-                            Priority = 30,
-                            Symbol = "F",
-                            TypeName = "Temperatura"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Name = "milisekunda",
-                            Priority = 10,
-                            Symbol = "ms",
-                            TypeName = "Czas"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Name = "sekunda",
-                            Priority = 20,
-                            Symbol = "sek",
-                            TypeName = "Czas"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Name = "minuta",
-                            Priority = 30,
-                            Symbol = "min",
-                            TypeName = "Czas"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            Name = "godzina",
-                            Priority = 40,
-                            Symbol = "h",
-                            TypeName = "Czas"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Name = "doba",
-                            Priority = 50,
-                            Symbol = "d",
-                            TypeName = "Czas"
                         });
                 });
 

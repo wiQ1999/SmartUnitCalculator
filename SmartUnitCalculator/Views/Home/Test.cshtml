@@ -1,0 +1,43 @@
+﻿@model SmartUnitCalculator.Controllers.ViewModels.CalculationViewModel
+
+@{
+    ViewData["Title"] = "Test";
+}
+
+<h1>Test</h1>
+<br />
+<h2>@Model.BaseUnit</h2>
+
+<form asp-controller="Home" asp-action="Test" method="post">
+    @foreach (var unitType in Model.UnitTypes)
+    {
+        <h4>
+            @Html.ActionLink(unitType, "Test", "Home", new { type = unitType }, null)
+        </h4>
+    }
+    <p>
+        <select asp-for="BaseUnit" asp-items="Model.BaseUnits"></select>
+        Wartość bazowa: <input type="number" asp-for="BaseValue" />
+        <select asp-for="ResultUnit" asp-items="Model.ResultUnits"></select>
+        Wartość bazowa: 
+        <p>
+            @Model.ResultValue
+        </p>
+        <input type="submit" value="Calculate" />
+    </p>
+</form>
+
+@foreach (var history in Model.History)
+{
+    <p>
+        @history.Created | 
+        @history.BaseUnit | 
+        @history.BaseValue | 
+        @history.ResultUnit | 
+        @history.ResultValue
+    </p>
+}
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
