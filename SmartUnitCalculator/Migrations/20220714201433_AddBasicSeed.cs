@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SmartUnitCalculator.Migrations
 {
-    public partial class AddSeed : Migration
+    public partial class AddBasicSeed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -168,7 +168,50 @@ namespace SmartUnitCalculator.Migrations
                     { 97, 19, 0.008m, 20 },
                     { 98, 19, 0.001m, 21 },
                     { 99, 19, 0.000008m, 22 },
-                    { 100, 19, 0.000001m, 23 }
+                    { 100, 19, 0.000001m, 23 },
+                    { 101, 20, 1000000000m, 14 },
+                    { 102, 20, 125000000m, 15 },
+                    { 103, 20, 1000000m, 16 },
+                    { 104, 20, 125000m, 17 },
+                    { 105, 20, 1000m, 18 },
+                    { 106, 20, 125m, 19 },
+                    { 107, 20, 0.125m, 21 },
+                    { 108, 20, 0.001m, 22 },
+                    { 109, 20, 0.000125m, 23 },
+                    { 110, 21, 8000000000m, 14 },
+                    { 111, 21, 1000000000m, 15 },
+                    { 112, 21, 8000000m, 16 },
+                    { 113, 21, 1000000m, 17 },
+                    { 114, 21, 8000m, 18 },
+                    { 115, 21, 1000m, 19 },
+                    { 116, 21, 8m, 20 },
+                    { 117, 21, 0.008m, 22 },
+                    { 118, 21, 0.001m, 23 },
+                    { 119, 22, 1000000000000m, 14 },
+                    { 120, 22, 125000000000m, 15 },
+                    { 121, 22, 10000000000m, 16 },
+                    { 122, 22, 125000000m, 17 },
+                    { 123, 22, 1000000m, 18 },
+                    { 124, 22, 125000m, 19 },
+                    { 125, 22, 1000m, 20 },
+                    { 126, 22, 125m, 21 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Calculations",
+                columns: new[] { "Id", "BaseUnitId", "Multiplier", "ResultUnitId" },
+                values: new object[,]
+                {
+                    { 127, 22, 0.125m, 23 },
+                    { 128, 23, 8000000000000m, 14 },
+                    { 129, 23, 1000000000000m, 15 },
+                    { 130, 23, 8000000000m, 16 },
+                    { 131, 23, 1000000000m, 17 },
+                    { 132, 23, 8000000m, 18 },
+                    { 133, 23, 1000000m, 19 },
+                    { 134, 23, 8000m, 20 },
+                    { 135, 23, 1000m, 21 },
+                    { 136, 23, 8m, 22 }
                 });
 
             migrationBuilder.InsertData(
@@ -684,6 +727,186 @@ namespace SmartUnitCalculator.Migrations
                 table: "Calculations",
                 keyColumn: "Id",
                 keyValue: 100);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 101);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 102);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 103);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 104);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 105);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 106);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 107);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 108);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 109);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 110);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 111);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 112);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 113);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 114);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 115);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 116);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 117);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 118);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 119);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 120);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 121);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 122);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 123);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 124);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 125);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 126);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 127);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 128);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 129);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 130);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 131);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 132);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 133);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 134);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 135);
+
+            migrationBuilder.DeleteData(
+                table: "Calculations",
+                keyColumn: "Id",
+                keyValue: 136);
 
             migrationBuilder.DeleteData(
                 table: "History",

@@ -748,6 +748,258 @@ namespace SmartUnitCalculator.Migrations
                             BaseUnitId = 19,
                             Multiplier = 0.000001m,
                             ResultUnitId = 23
+                        },
+                        new
+                        {
+                            Id = 101,
+                            BaseUnitId = 20,
+                            Multiplier = 1000000000m,
+                            ResultUnitId = 14
+                        },
+                        new
+                        {
+                            Id = 102,
+                            BaseUnitId = 20,
+                            Multiplier = 125000000m,
+                            ResultUnitId = 15
+                        },
+                        new
+                        {
+                            Id = 103,
+                            BaseUnitId = 20,
+                            Multiplier = 1000000m,
+                            ResultUnitId = 16
+                        },
+                        new
+                        {
+                            Id = 104,
+                            BaseUnitId = 20,
+                            Multiplier = 125000m,
+                            ResultUnitId = 17
+                        },
+                        new
+                        {
+                            Id = 105,
+                            BaseUnitId = 20,
+                            Multiplier = 1000m,
+                            ResultUnitId = 18
+                        },
+                        new
+                        {
+                            Id = 106,
+                            BaseUnitId = 20,
+                            Multiplier = 125m,
+                            ResultUnitId = 19
+                        },
+                        new
+                        {
+                            Id = 107,
+                            BaseUnitId = 20,
+                            Multiplier = 0.125m,
+                            ResultUnitId = 21
+                        },
+                        new
+                        {
+                            Id = 108,
+                            BaseUnitId = 20,
+                            Multiplier = 0.001m,
+                            ResultUnitId = 22
+                        },
+                        new
+                        {
+                            Id = 109,
+                            BaseUnitId = 20,
+                            Multiplier = 0.000125m,
+                            ResultUnitId = 23
+                        },
+                        new
+                        {
+                            Id = 110,
+                            BaseUnitId = 21,
+                            Multiplier = 8000000000m,
+                            ResultUnitId = 14
+                        },
+                        new
+                        {
+                            Id = 111,
+                            BaseUnitId = 21,
+                            Multiplier = 1000000000m,
+                            ResultUnitId = 15
+                        },
+                        new
+                        {
+                            Id = 112,
+                            BaseUnitId = 21,
+                            Multiplier = 8000000m,
+                            ResultUnitId = 16
+                        },
+                        new
+                        {
+                            Id = 113,
+                            BaseUnitId = 21,
+                            Multiplier = 1000000m,
+                            ResultUnitId = 17
+                        },
+                        new
+                        {
+                            Id = 114,
+                            BaseUnitId = 21,
+                            Multiplier = 8000m,
+                            ResultUnitId = 18
+                        },
+                        new
+                        {
+                            Id = 115,
+                            BaseUnitId = 21,
+                            Multiplier = 1000m,
+                            ResultUnitId = 19
+                        },
+                        new
+                        {
+                            Id = 116,
+                            BaseUnitId = 21,
+                            Multiplier = 8m,
+                            ResultUnitId = 20
+                        },
+                        new
+                        {
+                            Id = 117,
+                            BaseUnitId = 21,
+                            Multiplier = 0.008m,
+                            ResultUnitId = 22
+                        },
+                        new
+                        {
+                            Id = 118,
+                            BaseUnitId = 21,
+                            Multiplier = 0.001m,
+                            ResultUnitId = 23
+                        },
+                        new
+                        {
+                            Id = 119,
+                            BaseUnitId = 22,
+                            Multiplier = 1000000000000m,
+                            ResultUnitId = 14
+                        },
+                        new
+                        {
+                            Id = 120,
+                            BaseUnitId = 22,
+                            Multiplier = 125000000000m,
+                            ResultUnitId = 15
+                        },
+                        new
+                        {
+                            Id = 121,
+                            BaseUnitId = 22,
+                            Multiplier = 10000000000m,
+                            ResultUnitId = 16
+                        },
+                        new
+                        {
+                            Id = 122,
+                            BaseUnitId = 22,
+                            Multiplier = 125000000m,
+                            ResultUnitId = 17
+                        },
+                        new
+                        {
+                            Id = 123,
+                            BaseUnitId = 22,
+                            Multiplier = 1000000m,
+                            ResultUnitId = 18
+                        },
+                        new
+                        {
+                            Id = 124,
+                            BaseUnitId = 22,
+                            Multiplier = 125000m,
+                            ResultUnitId = 19
+                        },
+                        new
+                        {
+                            Id = 125,
+                            BaseUnitId = 22,
+                            Multiplier = 1000m,
+                            ResultUnitId = 20
+                        },
+                        new
+                        {
+                            Id = 126,
+                            BaseUnitId = 22,
+                            Multiplier = 125m,
+                            ResultUnitId = 21
+                        },
+                        new
+                        {
+                            Id = 127,
+                            BaseUnitId = 22,
+                            Multiplier = 0.125m,
+                            ResultUnitId = 23
+                        },
+                        new
+                        {
+                            Id = 128,
+                            BaseUnitId = 23,
+                            Multiplier = 8000000000000m,
+                            ResultUnitId = 14
+                        },
+                        new
+                        {
+                            Id = 129,
+                            BaseUnitId = 23,
+                            Multiplier = 1000000000000m,
+                            ResultUnitId = 15
+                        },
+                        new
+                        {
+                            Id = 130,
+                            BaseUnitId = 23,
+                            Multiplier = 8000000000m,
+                            ResultUnitId = 16
+                        },
+                        new
+                        {
+                            Id = 131,
+                            BaseUnitId = 23,
+                            Multiplier = 1000000000m,
+                            ResultUnitId = 17
+                        },
+                        new
+                        {
+                            Id = 132,
+                            BaseUnitId = 23,
+                            Multiplier = 8000000m,
+                            ResultUnitId = 18
+                        },
+                        new
+                        {
+                            Id = 133,
+                            BaseUnitId = 23,
+                            Multiplier = 1000000m,
+                            ResultUnitId = 19
+                        },
+                        new
+                        {
+                            Id = 134,
+                            BaseUnitId = 23,
+                            Multiplier = 8000m,
+                            ResultUnitId = 20
+                        },
+                        new
+                        {
+                            Id = 135,
+                            BaseUnitId = 23,
+                            Multiplier = 1000m,
+                            ResultUnitId = 21
+                        },
+                        new
+                        {
+                            Id = 136,
+                            BaseUnitId = 23,
+                            Multiplier = 8m,
+                            ResultUnitId = 22
                         });
                 });
 
