@@ -4,6 +4,6 @@
     {
         public int BaseUnitId { get; set; }
         public int ResultUnitId { get; set; }
-        public decimal BaseValue { get; set; }
+        public string BaseValue { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace SmartUnitCalculator.Models
         public IEnumerable<UnitType>? UnitTypes { get; set; }
         public SelectList? BaseUnits { get; set; }
         public SelectList? ResultUnits { get; set; }
-        public IEnumerable<History>? History { get; set; }
+        public IEnumerable<HistoryStringValue>? History { get; set; }
     }
 }
