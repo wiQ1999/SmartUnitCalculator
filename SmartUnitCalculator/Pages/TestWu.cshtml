@@ -1,4 +1,28 @@
 ﻿@page
 @model SmartUnitCalculator.Pages.TestWuModel
 @{
+    ViewData["Title"] = "TestWu";
 }
+
+@foreach (var type in Model.Lists.UnitTypes)
+{
+    <a asp-route-Type="@type.Name">@type.Name</a>
+}
+
+<h1>Typ jednostki: @Model.Type</h1>
+<form asp-page="TestWu" method="post">
+    <input type="hidden" asp-for="Type"/>
+    <p>
+        <select asp-for="Input.BaseUnitId" asp-items="Model.Lists.BaseUnits"></select>
+    </p>
+    <p>
+        <input type="number" step="any" asp-for="Input.BaseValue"/>
+    </p>
+    <p>
+        <select asp-for="Input.ResultUnitId" asp-items="Model.Lists.ResultUnits"></select>
+    </p>
+    <h5>
+        Wynik: @Model.ResultValue
+    </h5>
+    <button type="submit">SUBMIT</button>
+</form>
