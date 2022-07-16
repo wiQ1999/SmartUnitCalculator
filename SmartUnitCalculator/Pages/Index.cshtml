@@ -1,12 +1,54 @@
 ﻿@page
 @model SmartUnitCalculator.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Smart Unit Calculator";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Smart Unit Calculator</h1>
+<br />
+<div class="row">
+    <div class="col-sm-8"</div>
+<form asp-controller="Home" asp-action="Test" method="post" class="form_style">
+  <table class="table">
+            @foreach (var unitType in Model.Lists.UnitTypes)
+            {
+                    @if(unitType.Name == @Model.Type){
+                       <th scope="col" class="">@Html.ActionLink(unitType.Name, "Test", "Home", new { type = unitType }, null)</th>
+                    }
+                    else
+                    {
+                    <th scope="col" class="">@Html.ActionLink(unitType.Name, "Test", "Home", new { type = unitType }, null)</th>
+                    }
+            }
+  </table>
 
-<h1>TEST</h1>
+     <table class="table">
+         <tr>
+             <td scope="row" class="row_style"><select asp-for="Input.BaseUnitId" asp-items="Model.Lists.BaseUnits" class="form-control mb-3" id="FormControlSelect"></select></td>
+             <td scope="row" class="row_style"><input type="number" asp-for="Input.BaseValue" class="form-control mb-3" id="exampleFormControlInput"/></td> 
+          </tr>
+          </table>
+          <table class="table">
+          <tr>
+             <td scope="row" class="row_style"><select asp-for="Input.ResultUnitId" asp-items="Model.Lists.ResultUnits" class="form-control mb-3" id="FormControlSelect"></select></td>
+             <td scope="row" class="row_style text-center"><input type="submit" value="Calculate" class="btn btn-primary mb-3"/></td>
+        </tr>
+     </table>
+    <h5 class="text-center">Wynik: @Model.ResultValue </h5>  
+</form>
+</div>
+<div class="col-sm-4">
+    <h4>Historia</h4>
+    <table class="table">
+@foreach (var history in Model.Lists.History)
+{
+    <tr>
+       <td>@history.Created</td> 
+        <td>@history.BaseUnit</td>  
+        <td>@history.BaseValue</td>  
+        <td>@history.ResultUnit</td> 
+        <td>@history.ResultValue</td> 
+    </tr>
+}
+</table>
+</div>
