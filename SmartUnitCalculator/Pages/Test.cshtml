@@ -1,4 +1,5 @@
-﻿@model SmartUnitCalculator.Controllers.ViewModels.CalculationViewModel
+﻿@page
+@model SmartUnitCalculator.Pages.TestModel
 
 @{
     ViewData["Title"] = "Test";
@@ -13,7 +14,7 @@
     {
         <table class="table">
   <thead class="thead-dark">
-    <tr>@Html.ActionLink(unitType, "Test", "Home", new { type = unitType }, null)</tr>
+    <tr>@Html.ActionLink(unitType.Name, "Test", "Home", new { type = unitType }, null)</tr>
       </thead>
       </table>
     }
