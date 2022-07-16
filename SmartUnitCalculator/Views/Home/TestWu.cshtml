@@ -8,23 +8,23 @@
 <br />
 <h2>@Model.BaseUnit</h2>
 
-<form asp-controller="Home" asp-action="Test" method="post">
-    @foreach (var unitType in Model.UnitTypes)
+@foreach (var unitType in Model.UnitTypes)
     {
-        <h4>
+        //<a asp-controller="Home" asp-action="TestWu" 
+        @*<h4>
             @Html.ActionLink(unitType, "Test", "Home", new { type = unitType }, null)
-        </h4>
+        </h4>*@
     }
+
+<form asp-controller="Home" asp-action="TestWu" method="post">
+    <select asp-for="BaseUnit" asp-items="Model.BaseUnits"></select>
+    Wartość bazowa: <input type="number" asp-for="BaseValue" />
+    <select asp-for="ResultUnit" asp-items="Model.ResultUnits"></select>
+    Wartość bazowa: 
     <p>
-        <select asp-for="BaseUnit" asp-items="Model.BaseUnits"></select>
-        Wartość bazowa: <input type="number" asp-for="BaseValue" />
-        <select asp-for="ResultUnit" asp-items="Model.ResultUnits"></select>
-        Wartość bazowa: 
-        <p>
-            @Model.ResultValue
-        </p>
-        <input type="submit" value="Calculate" />
+        @Model.ResultValue
     </p>
+    <input type="submit" value="Calculate" />
 </form>
 
 @foreach (var history in Model.History)
