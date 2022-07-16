@@ -8,16 +8,16 @@
 <br />
 <div class="row">
     <div class="col-sm-8"</div>
-<form asp-controller="Home" asp-action="Test" method="post" class="form_style">
+<form asp-page="Index" method="post" class="form_style">
   <table class="table">
             @foreach (var unitType in Model.Lists.UnitTypes)
             {
                     @if(unitType.Name == @Model.Type){
-                       <th scope="col" class="">@Html.ActionLink(unitType.Name, "Test", "Home", new { type = unitType }, null)</th>
+                     <th scope="col" class=""><a asp-route-Type="@unitType.Name">@unitType.Name</a></th>
                     }
                     else
                     {
-                    <th scope="col" class="">@Html.ActionLink(unitType.Name, "Test", "Home", new { type = unitType }, null)</th>
+                     <th scope="col" class=""><a asp-route-Type="@unitType.Name">@unitType.Name</a></th>
                     }
             }
   </table>
