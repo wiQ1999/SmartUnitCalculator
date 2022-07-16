@@ -14,5 +14,16 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #3c4252;
+    color:white;
+}
+
+header {
+    box-shadow: 0 0.1rem 0.8rem black;
+}
+
+a{
+    text-decoration:none;
+    color:white;
 }
