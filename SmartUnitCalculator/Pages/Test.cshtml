@@ -1,19 +1,22 @@
-﻿@model SmartUnitCalculator.Controllers.ViewModels.CalculationViewModel
+﻿@page
+@model SmartUnitCalculator.Pages.TestModel
 
 @{
-    ViewData["Title"] = "TestWu";
+    ViewData["Title"] = "Test";
 }
 
-<h1>TestWu</h1>
+<h1>Test</h1>
 <br />
 <h2>@Model.BaseUnit</h2>
 
 <form asp-controller="Home" asp-action="Test" method="post">
     @foreach (var unitType in Model.UnitTypes)
     {
-        <h4>
-            @Html.ActionLink(unitType, "Test", "Home", new { type = unitType }, null)
-        </h4>
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>@Html.ActionLink(unitType.Name, "Test", "Home", new { type = unitType }, null)</tr>
+      </thead>
+      </table>
     }
     <p>
         <select asp-for="BaseUnit" asp-items="Model.BaseUnits"></select>
@@ -37,6 +40,10 @@
         @history.ResultValue
     </p>
 }
+
+<p>
+    Hello Word
+</p>
 
 <div>
     <a asp-action="Index">Back to List</a>
