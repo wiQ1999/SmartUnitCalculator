@@ -1,0 +1,23 @@
+﻿@page
+@model SmartUnitCalculator.Pages.LogInModel
+@{
+}
+
+<h1>Zaloguj się</h1>
+
+<form method="post" asp-page="User">
+        <table class="table">
+            <tr>
+                <td scoop="row">Username</td>
+                <td scoop="row"><input type="text" @*asp-for=""*@ /></td>
+            </tr>
+            <tr>
+                <td scoop="row">Password</td>
+                <td scoop="row"><input type="password" @*asp-for=""*@ /></td>
+            </tr>
+            <tr>
+                <td scoop="row">&nbsp;</td>
+                <td scoop="row"><input type="submit" value="Login" class="btn btn-primary" /></td>
+            </tr>
+        </table>
+    </form>
