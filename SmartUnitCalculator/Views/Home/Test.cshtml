@@ -11,9 +11,11 @@
 <form asp-controller="Home" asp-action="Test" method="post">
     @foreach (var unitType in Model.UnitTypes)
     {
-        <h4>
-            @Html.ActionLink(unitType, "Test", "Home", new { type = unitType }, null)
-        </h4>
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>@Html.ActionLink(unitType, "Test", "Home", new { type = unitType }, null)</tr>
+      </thead>
+      </table>
     }
     <p>
         <select asp-for="BaseUnit" asp-items="Model.BaseUnits"></select>
