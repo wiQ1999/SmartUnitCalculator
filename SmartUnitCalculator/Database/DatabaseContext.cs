@@ -4,6 +4,7 @@ using SmartUnitCalculator.Database.Models;
 namespace SmartUnitCalculator.Database;
 public class DatabaseContext : DbContext
 {
+    public DbSet<User> Users { get; set; }
     public DbSet<UnitType>? UnitTypes { get; set; }
     public DbSet<Unit>? Units { get; set; }
     public DbSet<Calculation>? Calculations { get; set; }
@@ -15,6 +16,14 @@ public class DatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>(user =>
+        {
+            user.HasKey(u => u.Id);
+            user.Property(u => u.Login).HasMaxLength(50).IsRequired();
+            user.HasIndex(u => u.Login).IsUnique();
+            user.Property(u => u.Password).IsRequired();
+        });
+
         modelBuilder.Entity<UnitType>(unitType =>
         {
             unitType.HasKey(ut => ut.Name);
@@ -42,6 +51,7 @@ public class DatabaseContext : DbContext
         modelBuilder.Entity<History>(history =>
         {
             history.HasKey(h => h.Id);
+            history.HasOne(h => h.User).WithMany().HasForeignKey(h => h.UserId).OnDelete(DeleteBehavior.Restrict);
             history.HasOne(h => h.BaseUnit).WithMany().HasForeignKey(h => h.BaseUnitId).OnDelete(DeleteBehavior.Restrict);
             history.HasOne(h => h.ResultUnit).WithMany().HasForeignKey(h => h.ResultUnitId).OnDelete(DeleteBehavior.Restrict);
             history.Property(h => h.BaseValue).HasPrecision(28, 14);
