@@ -51,7 +51,7 @@ namespace SmartUnitCalculator.Pages
                 Information = "Missing user in database.";
                 return false;
             }
-            string hash = Hasher.Hash(user.Password);
+            string hash = Hasher.Hash(ChangePassword.Password);
             user.Password = hash;
             _context.SaveChanges();
             return true;
