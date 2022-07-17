@@ -785,7 +785,7 @@ namespace SmartUnitCalculator.Migrations
                         .HasPrecision(28, 14)
                         .HasColumnType("decimal(28,14)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -887,6 +887,86 @@ namespace SmartUnitCalculator.Migrations
                             Created = new DateTime(2022, 7, 13, 12, 1, 32, 0, DateTimeKind.Unspecified),
                             ResultUnitId = 2,
                             ResultValue = 1240m,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BaseUnitId = 9,
+                            BaseValue = 5m,
+                            Created = new DateTime(2022, 7, 14, 3, 15, 30, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 10,
+                            ResultValue = 0.005m,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BaseUnitId = 2,
+                            BaseValue = 50m,
+                            Created = new DateTime(2022, 7, 14, 3, 15, 56, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 1,
+                            ResultValue = 50000m,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BaseUnitId = 13,
+                            BaseValue = 130m,
+                            Created = new DateTime(2022, 7, 14, 12, 50, 22, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 12,
+                            ResultValue = 130000m,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BaseUnitId = 6,
+                            BaseValue = 18.5m,
+                            Created = new DateTime(2022, 7, 14, 12, 52, 1, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 9,
+                            ResultValue = 0.185m,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BaseUnitId = 4,
+                            BaseValue = 56.5m,
+                            Created = new DateTime(2022, 7, 14, 21, 22, 10, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 2,
+                            ResultValue = 565000m,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 15,
+                            BaseUnitId = 14,
+                            BaseValue = 48m,
+                            Created = new DateTime(2022, 7, 15, 11, 44, 32, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 17,
+                            ResultValue = 0.006m,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            BaseUnitId = 18,
+                            BaseValue = 9m,
+                            Created = new DateTime(2022, 7, 15, 15, 1, 11, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 15,
+                            ResultValue = 1125000m,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 17,
+                            BaseUnitId = 11,
+                            BaseValue = 190009630001m,
+                            Created = new DateTime(2022, 7, 16, 12, 1, 32, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 13,
+                            ResultValue = 0.190009630001m,
                             UserId = 1
                         });
                 });
@@ -1208,10 +1288,9 @@ namespace SmartUnitCalculator.Migrations
                         .IsRequired();
 
                     b.HasOne("SmartUnitCalculator.Database.Models.User", "User")
-                        .WithMany()
+                        .WithMany("History")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("BaseUnit");
 
@@ -1234,6 +1313,11 @@ namespace SmartUnitCalculator.Migrations
             modelBuilder.Entity("SmartUnitCalculator.Database.Models.Unit", b =>
                 {
                     b.Navigation("Calculations");
+                });
+
+            modelBuilder.Entity("SmartUnitCalculator.Database.Models.User", b =>
+                {
+                    b.Navigation("History");
                 });
 #pragma warning restore 612, 618
         }

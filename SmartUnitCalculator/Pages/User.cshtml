@@ -20,4 +20,6 @@
 <div class="mr-5 mb-3"><button asp-page="ChangeUserName" class="btn btn-primary mr-5" >Zmień nazwę użtykownika</button> </div>
 <div class="mr-5 mb-3"><button asp-page="ChangePassword" class="btn btn-primary mr-4">Zmień hasło</button></div>
 <div class="mr-5 mb-3"><button asp-page="" class="btn btn-primary mr-3">Przypomnij hasło</button></div>
-<div class="mr-5 mb-3"><button asp-page="Logout" class="btn btn-primary mr-2">Wyloguj się</button></div>
+<form method="post">
+    <div class="mr-5 mb-3"><button asp-page-handler="Logout" class="btn btn-primary mr-2">Wyloguj się</button></div>
+</form>
