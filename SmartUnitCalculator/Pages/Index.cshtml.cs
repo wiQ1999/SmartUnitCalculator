@@ -11,11 +11,12 @@ namespace SmartUnitCalculator.Pages
     {
         private readonly DatabaseContext _context;
         private decimal _baseValue;
-        private decimal _resultValue;
+        private decimal? _resultValue;
 
         public CalculatorLists Lists { get; set; }
 
-        public string ResultValue => _resultValue.ToString("G29");
+        public string ResultValue => 
+            _resultValue is null ? "NaN" :  ((decimal)_resultValue).ToString("G29");
 
         [BindProperty(SupportsGet = true)]
         public string? Type { get; set; }
@@ -67,9 +68,25 @@ namespace SmartUnitCalculator.Pages
                 c.BaseUnitId == Input.BaseUnitId && 
                 c.ResultUnitId == Input.ResultUnitId);
             if (calc is not null && calc.Multiplier is not null)
-                _resultValue = _baseValue * (decimal)calc.Multiplier;
+                _resultValue = CalculatAndValidateResultValue(calc);
             else
                 _resultValue = _baseValue;
+        }
+
+        private decimal? CalculatAndValidateResultValue(Calculation calc)
+        {
+            try
+            {
+                decimal result = _baseValue * (decimal)calc.Multiplier;
+                if (result < -99999999999999.99999999999999m ||
+                    result > 99999999999999.99999999999999m)
+                    throw new Exception("Wartość poza zakresem.");
+                return result;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
         }
 
         private void GetUnitsSelectLists()
@@ -94,19 +111,21 @@ namespace SmartUnitCalculator.Pages
             GetLastHistory();
             ConvertInputValueToNumber();
             CalculateResultValue();
-            SaveCalculation();
+            SaveCalculationifValid();
             GetUnitsSelectLists();
             return Page();
         }
 
-        private void SaveCalculation()
+        private void SaveCalculationifValid()
         {
+            if (_resultValue is null)
+                return;
             History his = new()
             {
                 BaseUnitId = Input.BaseUnitId,
                 ResultUnitId = Input.ResultUnitId,
                 BaseValue = _baseValue,
-                ResultValue = _resultValue
+                ResultValue = (decimal)_resultValue
             };
             _context.History!.Add(his);
             _context.SaveChanges();
