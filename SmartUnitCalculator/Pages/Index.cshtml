@@ -10,7 +10,7 @@
     <div class="col-sm-8">
 <form asp-page="Index" method="post" class="form_style">
     <input type="hidden" asp-for="Type" value="@Model.Type" />
-  <table class="table table-hover">
+  <table class="table">
             @foreach (var unitType in Model.Lists.UnitTypes)
             {
                     @if(unitType.Name == @Model.Type){
