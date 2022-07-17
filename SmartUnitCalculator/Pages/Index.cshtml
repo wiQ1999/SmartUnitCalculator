@@ -10,11 +10,11 @@
     <div class="col-sm-8">
 <form asp-page="Index" method="post" class="form_style">
     <input type="hidden" asp-for="Type" value="@Model.Type" />
-  <table class="table table-hover">
+  <table class="table">
             @foreach (var unitType in Model.Lists.UnitTypes)
             {
                     @if(unitType.Name == @Model.Type){
-                     <th scope="col" class=""><a asp-route-Type="@unitType.Name">@unitType.Name</a></th>
+                     <th scope="col" class="bg-primary"><a asp-route-Type="@unitType.Name">@unitType.Name</a></th>
                     }
                     else
                     {
@@ -22,7 +22,6 @@
                     }
             }
   </table>
-
      <table class="table">
          <tr>
              <td scope="row" class="row_style"><select asp-for="Input.BaseUnitId" asp-items="Model.Lists.BaseUnits" class="form-control mb-3" id="FormControlSelect"></select></td>
@@ -39,7 +38,7 @@
 </form>
 </div>
 <div class="col-sm-4">
-        <h4>Twoja historia wyszukiwań</h4>
+        <h4 class="text-center">Twoja historia wyszukiwań</h4>
  @if (@User.Identity.IsAuthenticated){
         <table class="table text-white">
         @foreach (var history in Model.Lists.History)
