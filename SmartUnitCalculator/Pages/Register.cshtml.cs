@@ -33,12 +33,12 @@ namespace SmartUnitCalculator.Pages
                 return Page();
             if (Register.Password != Register.PasswordCheck)
             {
-                Information = "Podane has³a musz¹ byæ jednakowe.";
+                Information = "Given passwords must be the same.";
                 return Page();
             }
             if (_context.Users.Any(u => u.Login == Register.Login))
             {
-                Information = $"Uzytkownik o loginie {Register.Login} ju¿ istnieje.";
+                Information = $"User with login {Register.Login} alredy exist.";
                 return Page();
             }
             CreateUser();
@@ -58,7 +58,7 @@ namespace SmartUnitCalculator.Pages
             _context.SaveChanges();
         }
 
-        private void Login()
+        private async void Login()
         {
             List<Claim> claims = new()
             {
@@ -66,7 +66,7 @@ namespace SmartUnitCalculator.Pages
             };
             ClaimsIdentity identity = new(claims, "SMC_Cookie");
             ClaimsPrincipal claimsPrincipal = new(identity);
-            HttpContext.SignInAsync("SMC_Cookie", claimsPrincipal).RunSynchronously();
+            await HttpContext.SignInAsync("SMC_Cookie", claimsPrincipal);
         }
     }
 }
