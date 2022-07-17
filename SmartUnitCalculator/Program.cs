@@ -13,7 +13,7 @@ builder.Services.AddAuthentication().AddCookie("SMC_Cookie", options =>
 });
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<DatabaseContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SUCDB_W")
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SUCDB_J")
     ?? throw new InvalidOperationException("Connection string not found.")));
 builder.Services.ConfigureApplicationCookie(option => 
 { 
