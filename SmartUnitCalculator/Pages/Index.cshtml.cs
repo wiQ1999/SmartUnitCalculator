@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SmartUnitCalculator.Database;
 using SmartUnitCalculator.Database.Models;
+using SmartUnitCalculator.Helpers;
 using SmartUnitCalculator.Models;
 
 namespace SmartUnitCalculator.Pages
@@ -9,11 +10,13 @@ namespace SmartUnitCalculator.Pages
     public class IndexModel : PageModel
     {
         private readonly DatabaseContext _context;
-        private decimal _resultValue;
+        private decimal _baseValue;
+        private decimal? _resultValue;
 
         public CalculatorLists Lists { get; set; }
 
-        public double ResultValue => Decimal.ToDouble(_resultValue);
+        public string ResultValue => 
+            _resultValue is null ? "NaN" :  ((decimal)_resultValue).ToString("G29");
 
         [BindProperty(SupportsGet = true)]
         public string? Type { get; set; }
@@ -31,37 +34,59 @@ namespace SmartUnitCalculator.Pages
         public void OnGet()
         {
             InitializeTypeIfEmpty();
-            GenerateMainPage();
+            GetUnitTypes();
+            GetLastHistory();
+            ConvertInputValueToNumber();
+            CalculateResultValue();
+            GetUnitsSelectLists();
         }
 
         private void InitializeTypeIfEmpty()
         {
             if (string.IsNullOrWhiteSpace(Type))
-                Type = _context.UnitTypes!.OrderBy(ut => ut.Priority).FirstOrDefault()?.Name;
-        }
-
-        private void GenerateMainPage()
-        {
-            GetUnitTypes();
-            GetLastHistory();
-            CalculateResultValue();
-            GetUnitsSelectLists();
+                Type = _context.UnitTypes!
+                    .OrderBy(ut => ut.Priority)
+                    .FirstOrDefault()?.Name;
         }
 
         private void GetUnitTypes() =>
-            Lists.UnitTypes = _context.UnitTypes!.OrderBy(ut => ut.Priority);
+            Lists.UnitTypes = _context.UnitTypes!
+                .OrderBy(ut => ut.Priority);
 
         private void GetLastHistory() =>
-            Lists.History = _context.History!.OrderByDescending(h => h.Created);
+            Lists.History = _context.History!
+                .OrderByDescending(h => h.Created)
+                .Take(10)
+                .Select(h => h.ToStringValue());
+
+        private void ConvertInputValueToNumber() =>
+            decimal.TryParse(Input.BaseValue, out _baseValue);
 
         private void CalculateResultValue()
         {
             Calculation calc = _context.Calculations!.FirstOrDefault(c =>
-            c.BaseUnitId == Input.BaseUnitId && c.ResultUnitId == Input.ResultUnitId);
+                c.BaseUnitId == Input.BaseUnitId && 
+                c.ResultUnitId == Input.ResultUnitId);
             if (calc is not null && calc.Multiplier is not null)
-                _resultValue = Input.BaseValue * (decimal)calc.Multiplier;
+                _resultValue = CalculatAndValidateResultValue(calc);
             else
-                _resultValue = Input.BaseValue;
+                _resultValue = _baseValue;
+        }
+
+        private decimal? CalculatAndValidateResultValue(Calculation calc)
+        {
+            try
+            {
+                decimal result = _baseValue * (decimal)calc.Multiplier;
+                if (result < -99999999999999.99999999999999m ||
+                    result > 99999999999999.99999999999999m)
+                    throw new Exception("Wartość poza zakresem.");
+                return result;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
         }
 
         private void GetUnitsSelectLists()
@@ -82,19 +107,25 @@ namespace SmartUnitCalculator.Pages
 
         public IActionResult OnPost()
         {
-            GenerateMainPage();
-            SaveCalculation();
+            GetUnitTypes();
+            GetLastHistory();
+            ConvertInputValueToNumber();
+            CalculateResultValue();
+            SaveCalculationifValid();
+            GetUnitsSelectLists();
             return Page();
         }
 
-        private void SaveCalculation()
+        private void SaveCalculationifValid()
         {
+            if (_resultValue is null)
+                return;
             History his = new()
             {
                 BaseUnitId = Input.BaseUnitId,
                 ResultUnitId = Input.ResultUnitId,
-                BaseValue = Input.BaseValue,
-                ResultValue = _resultValue
+                BaseValue = _baseValue,
+                ResultValue = (decimal)_resultValue
             };
             _context.History!.Add(his);
             _context.SaveChanges();
