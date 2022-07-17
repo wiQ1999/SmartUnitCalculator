@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SmartUnitCalculator.Database;
@@ -7,6 +8,7 @@ using SmartUnitCalculator.Models;
 
 namespace SmartUnitCalculator.Pages
 {
+    [Authorize]
     public class ChangePasswordModel : PageModel
     {
         private readonly DatabaseContext _context;

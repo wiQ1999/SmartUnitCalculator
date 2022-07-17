@@ -13,6 +13,8 @@ namespace SmartUnitCalculator.Pages
     {
         private readonly DatabaseContext _context;
 
+        public string Information { get; set; }
+
         [BindProperty]
         public LoginInput Login { get; set; }
 
@@ -32,18 +34,19 @@ namespace SmartUnitCalculator.Pages
             string hash = Hasher.Hash(Login.Password);
             User userDB = _context.Users!.FirstOrDefault(u => 
                 u.Login == Login.Login && u.Password == hash);
-            if (userDB is not null)
+            if (userDB is null)
             {
-                List<Claim> claims = new()
+                Information = "Incorrect login or password.";
+                return Page();
+            }
+            List<Claim> claims = new()
                 {
                     new(ClaimTypes.Name, userDB.Login)
                 };
-                ClaimsIdentity identity = new(claims, "SMC_Cookie");
-                ClaimsPrincipal claimsPrincipal = new(identity);
-                await HttpContext.SignInAsync("SMC_Cookie", claimsPrincipal);
-                return RedirectToPage("/User");
-            }
-            return Page();
+            ClaimsIdentity identity = new(claims, "SMC_Cookie");
+            ClaimsPrincipal claimsPrincipal = new(identity);
+            await HttpContext.SignInAsync("SMC_Cookie", claimsPrincipal);
+            return RedirectToPage("/User");
         }
     }
 }
