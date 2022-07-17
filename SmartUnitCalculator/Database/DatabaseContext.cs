@@ -51,7 +51,7 @@ public class DatabaseContext : DbContext
         modelBuilder.Entity<History>(history =>
         {
             history.HasKey(h => h.Id);
-            history.HasOne(h => h.User).WithMany().HasForeignKey(h => h.UserId).OnDelete(DeleteBehavior.Restrict);
+            history.HasOne(h => h.User).WithMany(u => u.History).HasForeignKey(h => h.UserId).IsRequired(false).OnDelete(DeleteBehavior.Restrict);
             history.HasOne(h => h.BaseUnit).WithMany().HasForeignKey(h => h.BaseUnitId).OnDelete(DeleteBehavior.Restrict);
             history.HasOne(h => h.ResultUnit).WithMany().HasForeignKey(h => h.ResultUnitId).OnDelete(DeleteBehavior.Restrict);
             history.Property(h => h.BaseValue).HasPrecision(28, 14);

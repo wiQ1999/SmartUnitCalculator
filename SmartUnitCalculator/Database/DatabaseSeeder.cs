@@ -168,7 +168,15 @@ public class DatabaseSeeder
             new History() { Id = 6, UserId = 2, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 6, 12, 12, 59) },
             new History() { Id = 7, UserId = 2, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 12, 12, 49, 44) },
             new History() { Id = 8, UserId = 3, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 13, 2, 11, 43) },
-            new History() { Id = 9, UserId = 1, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 13, 12, 1, 32) }
+            new History() { Id = 9, UserId = 1, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 13, 12, 1, 32) },
+            new History() { Id = 10, UserId = 2, BaseUnitId = 9, BaseValue = 5m, ResultUnitId = 10, ResultValue = 0.005m, Created = new DateTime(2022, 7, 14, 3, 15, 30) },
+            new History() { Id = 11, UserId = 2, BaseUnitId = 2, BaseValue = 50m, ResultUnitId = 1, ResultValue = 50_000m, Created = new DateTime(2022, 7, 14, 3, 15, 56) },
+            new History() { Id = 12, UserId = 3, BaseUnitId = 13, BaseValue = 130m, ResultUnitId = 12, ResultValue = 130_000m, Created = new DateTime(2022, 7, 14, 12, 50, 22) },
+            new History() { Id = 13, UserId = 3, BaseUnitId = 6, BaseValue = 18.5m, ResultUnitId = 9, ResultValue = 0.185m, Created = new DateTime(2022, 7, 14, 12, 52, 1) },
+            new History() { Id = 14, UserId = 3, BaseUnitId = 4, BaseValue = 56.5m, ResultUnitId = 2, ResultValue = 565_000m, Created = new DateTime(2022, 7, 14, 21, 22, 10) },
+            new History() { Id = 15, UserId = 1, BaseUnitId = 14, BaseValue = 48m, ResultUnitId = 17, ResultValue = 0.006m, Created = new DateTime(2022, 7, 15, 11, 44, 32) },
+            new History() { Id = 16, UserId = 2, BaseUnitId = 18, BaseValue = 9m, ResultUnitId = 15, ResultValue = 1_125_000m, Created = new DateTime(2022, 7, 15, 15, 1, 11) },
+            new History() { Id = 17, UserId = 1, BaseUnitId = 11, BaseValue = 190_009_630_001m, ResultUnitId = 13, ResultValue = 0.190_009_630_001m, Created = new DateTime(2022, 7, 16, 12, 1, 32) }
         );
     }
 }

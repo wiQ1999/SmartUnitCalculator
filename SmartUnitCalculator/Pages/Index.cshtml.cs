@@ -55,8 +55,9 @@ namespace SmartUnitCalculator.Pages
 
         private void GetLastHistory() =>
             Lists.History = _context.History!
+                .Where(h => h.User != null && h.User.Login == User.Identity.Name)
                 .OrderByDescending(h => h.Created)
-                .Take(10)
+                .Take(5)
                 .Select(h => h.ToStringValue());
 
         private void ConvertInputValueToNumber() =>
@@ -127,6 +128,9 @@ namespace SmartUnitCalculator.Pages
                 BaseValue = _baseValue,
                 ResultValue = (decimal)_resultValue
             };
+            User user = _context.Users!.FirstOrDefault(u => u.Login == User.Identity.Name);
+            if (user is not null)
+                his.User = user;
             _context.History!.Add(his);
             _context.SaveChanges();
         }
