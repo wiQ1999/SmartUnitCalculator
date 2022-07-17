@@ -5,15 +5,15 @@
 
 <h1>Zaloguj się</h1>
 
-<form method="post" asp-page="User">
+<form method="post">
         <table class="table">
             <tr>
                 <td scoop="row">Username</td>
-                <td scoop="row"><input type="text" @*asp-for=""*@ /></td>
+                <td scoop="row"><input type="text" asp-for="Login.Login" /></td>
             </tr>
             <tr>
                 <td scoop="row">Password</td>
-                <td scoop="row"><input type="password" @*asp-for=""*@ /></td>
+                <td scoop="row"><input type="password" asp-for="Login.Password" /></td>
             </tr>
             <tr>
                 <td scoop="row">&nbsp;</td>
