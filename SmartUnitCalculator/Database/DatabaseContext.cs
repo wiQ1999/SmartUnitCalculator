@@ -36,7 +36,7 @@ public class DatabaseContext : DbContext
             calculation.HasKey(c => c.Id);
             calculation.HasOne(c => c.BaseUnit).WithMany(u => u.Calculations).HasForeignKey(c => c.BaseUnitId).OnDelete(DeleteBehavior.Restrict);
             calculation.HasOne(c => c.ResultUnit).WithMany().HasForeignKey(c => c.ResultUnitId).OnDelete(DeleteBehavior.Restrict);
-            calculation.Property(c => c.Multiplier).HasPrecision(38, 19).IsRequired(false);
+            calculation.Property(c => c.Multiplier).HasPrecision(28, 14).IsRequired(false);
         });
 
         modelBuilder.Entity<History>(history =>
@@ -44,9 +44,8 @@ public class DatabaseContext : DbContext
             history.HasKey(h => h.Id);
             history.HasOne(h => h.BaseUnit).WithMany().HasForeignKey(h => h.BaseUnitId).OnDelete(DeleteBehavior.Restrict);
             history.HasOne(h => h.ResultUnit).WithMany().HasForeignKey(h => h.ResultUnitId).OnDelete(DeleteBehavior.Restrict);
-            history.Property(h => h.BaseValue).HasPrecision(38, 19);
-            history.Property(h => h.ResultValue).HasPrecision(38, 19);
-            history.Property(h => h.BaseValue).HasPrecision(38, 19);
+            history.Property(h => h.BaseValue).HasPrecision(28, 14);
+            history.Property(h => h.ResultValue).HasPrecision(28, 14);
             history.Property(h => h.Created).HasDefaultValueSql("getdate()");
         });
 
