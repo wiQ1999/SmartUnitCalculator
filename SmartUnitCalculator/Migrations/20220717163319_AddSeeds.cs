@@ -193,7 +193,15 @@ namespace SmartUnitCalculator.Migrations
                     { 6, 4, 1.24m, new DateTime(2022, 7, 6, 12, 12, 59, 0, DateTimeKind.Unspecified), 2, 1240m, 2 },
                     { 7, 4, 1.24m, new DateTime(2022, 7, 12, 12, 49, 44, 0, DateTimeKind.Unspecified), 2, 1240m, 2 },
                     { 8, 4, 1.24m, new DateTime(2022, 7, 13, 2, 11, 43, 0, DateTimeKind.Unspecified), 2, 1240m, 3 },
-                    { 9, 4, 1.24m, new DateTime(2022, 7, 13, 12, 1, 32, 0, DateTimeKind.Unspecified), 2, 1240m, 1 }
+                    { 9, 4, 1.24m, new DateTime(2022, 7, 13, 12, 1, 32, 0, DateTimeKind.Unspecified), 2, 1240m, 1 },
+                    { 10, 9, 5m, new DateTime(2022, 7, 14, 3, 15, 30, 0, DateTimeKind.Unspecified), 10, 0.005m, 2 },
+                    { 11, 2, 50m, new DateTime(2022, 7, 14, 3, 15, 56, 0, DateTimeKind.Unspecified), 1, 50000m, 2 },
+                    { 12, 13, 130m, new DateTime(2022, 7, 14, 12, 50, 22, 0, DateTimeKind.Unspecified), 12, 130000m, 3 },
+                    { 13, 6, 18.5m, new DateTime(2022, 7, 14, 12, 52, 1, 0, DateTimeKind.Unspecified), 9, 0.185m, 3 },
+                    { 14, 4, 56.5m, new DateTime(2022, 7, 14, 21, 22, 10, 0, DateTimeKind.Unspecified), 2, 565000m, 3 },
+                    { 15, 14, 48m, new DateTime(2022, 7, 15, 11, 44, 32, 0, DateTimeKind.Unspecified), 17, 0.006m, 1 },
+                    { 16, 18, 9m, new DateTime(2022, 7, 15, 15, 1, 11, 0, DateTimeKind.Unspecified), 15, 1125000m, 2 },
+                    { 17, 11, 190009630001m, new DateTime(2022, 7, 16, 12, 1, 32, 0, DateTimeKind.Unspecified), 13, 0.190009630001m, 1 }
                 });
         }
 
@@ -748,6 +756,46 @@ namespace SmartUnitCalculator.Migrations
                 table: "History",
                 keyColumn: "Id",
                 keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 13);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 14);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 16);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 17);
 
             migrationBuilder.DeleteData(
                 table: "Units",
