@@ -37,6 +37,7 @@ namespace SmartUnitCalculator.Pages.Shared
         private void GetAllHistory() =>
             _allHistory = _context.History!
             .Include(h => h.User)
+            .Include(h => h.BaseUnit)
             .Include(h => h.ResultUnit)
             .Include(h => h.ResultUnit.Type)
             .ToList();
@@ -48,6 +49,7 @@ namespace SmartUnitCalculator.Pages.Shared
         {
             Statistics.History = _allHistory
                 .Where(h => h.User != null && h.User.Login == User.Identity.Name)
+                .OrderByDescending(h => h.Created)
                 .Select(h => h.ToStringValue()).ToList();
         }
 
