@@ -13,6 +13,12 @@ public class DatabaseSeeder
 
     public void Seed()
     {
+        _modelBuilder.Entity<User>().HasData(
+            new User() { Id = 1, Login = "Test01", Password = "5F4DCC3B5AA765D61D8327DEB882CF99" },
+            new User() { Id = 2, Login = "Test02", Password = "5F4DCC3B5AA765D61D8327DEB882CF99" },
+            new User() { Id = 3, Login = "Test03", Password = "5F4DCC3B5AA765D61D8327DEB882CF99" }
+        );
+
         _modelBuilder.Entity<UnitType>().HasData(
             new() { Name = "Waga", Priority = 10 },
             new() { Name = "Długość", Priority = 20 },
@@ -154,10 +160,15 @@ public class DatabaseSeeder
 
 
         _modelBuilder.Entity<History>().HasData(
-            new History() { Id = 1, BaseUnitId = 3, BaseValue = 25m, ResultUnitId = 5, ResultValue = 0.00025m, Created = new DateTime(2022, 7, 2, 12, 51, 2) },
-            new History() { Id = 2, BaseUnitId = 3, BaseValue = 25m, ResultUnitId = 4, ResultValue = 0.25m, Created = new DateTime(2022, 7, 2, 12, 51, 59) },
-            new History() { Id = 3, BaseUnitId = 4, BaseValue = 1m, ResultUnitId = 2, ResultValue = 1_000m, Created = new DateTime(2022, 7, 3, 9, 30, 51) },
-            new History() { Id = 4, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 4, 21, 11, 21) }
+            new History() { Id = 1, UserId = 1, BaseUnitId = 3, BaseValue = 25m, ResultUnitId = 5, ResultValue = 0.00025m, Created = new DateTime(2022, 7, 2, 12, 51, 2) },
+            new History() { Id = 2, UserId = 1, BaseUnitId = 3, BaseValue = 25m, ResultUnitId = 4, ResultValue = 0.25m, Created = new DateTime(2022, 7, 2, 12, 51, 59) },
+            new History() { Id = 3, UserId = 3, BaseUnitId = 4, BaseValue = 1m, ResultUnitId = 2, ResultValue = 1_000m, Created = new DateTime(2022, 7, 3, 9, 30, 51) },
+            new History() { Id = 4, UserId = 1, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 6, 11, 43, 3) },
+            new History() { Id = 5, UserId = 2, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 6, 12, 2, 22) },
+            new History() { Id = 6, UserId = 2, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 6, 12, 12, 59) },
+            new History() { Id = 7, UserId = 2, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 12, 12, 49, 44) },
+            new History() { Id = 8, UserId = 3, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 13, 2, 11, 43) },
+            new History() { Id = 9, UserId = 1, BaseUnitId = 4, BaseValue = 1.24m, ResultUnitId = 2, ResultValue = 1_240m, Created = new DateTime(2022, 7, 13, 12, 1, 32) }
         );
     }
 }

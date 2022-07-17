@@ -17,7 +17,7 @@ namespace SmartUnitCalculator.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -785,11 +785,16 @@ namespace SmartUnitCalculator.Migrations
                         .HasPrecision(28, 14)
                         .HasColumnType("decimal(28,14)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BaseUnitId");
 
                     b.HasIndex("ResultUnitId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("History");
 
@@ -801,7 +806,8 @@ namespace SmartUnitCalculator.Migrations
                             BaseValue = 25m,
                             Created = new DateTime(2022, 7, 2, 12, 51, 2, 0, DateTimeKind.Unspecified),
                             ResultUnitId = 5,
-                            ResultValue = 0.00025m
+                            ResultValue = 0.00025m,
+                            UserId = 1
                         },
                         new
                         {
@@ -810,7 +816,8 @@ namespace SmartUnitCalculator.Migrations
                             BaseValue = 25m,
                             Created = new DateTime(2022, 7, 2, 12, 51, 59, 0, DateTimeKind.Unspecified),
                             ResultUnitId = 4,
-                            ResultValue = 0.25m
+                            ResultValue = 0.25m,
+                            UserId = 1
                         },
                         new
                         {
@@ -819,16 +826,68 @@ namespace SmartUnitCalculator.Migrations
                             BaseValue = 1m,
                             Created = new DateTime(2022, 7, 3, 9, 30, 51, 0, DateTimeKind.Unspecified),
                             ResultUnitId = 2,
-                            ResultValue = 1000m
+                            ResultValue = 1000m,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 4,
                             BaseUnitId = 4,
                             BaseValue = 1.24m,
-                            Created = new DateTime(2022, 7, 4, 21, 11, 21, 0, DateTimeKind.Unspecified),
+                            Created = new DateTime(2022, 7, 6, 11, 43, 3, 0, DateTimeKind.Unspecified),
                             ResultUnitId = 2,
-                            ResultValue = 1240m
+                            ResultValue = 1240m,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BaseUnitId = 4,
+                            BaseValue = 1.24m,
+                            Created = new DateTime(2022, 7, 6, 12, 2, 22, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 2,
+                            ResultValue = 1240m,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BaseUnitId = 4,
+                            BaseValue = 1.24m,
+                            Created = new DateTime(2022, 7, 6, 12, 12, 59, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 2,
+                            ResultValue = 1240m,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BaseUnitId = 4,
+                            BaseValue = 1.24m,
+                            Created = new DateTime(2022, 7, 12, 12, 49, 44, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 2,
+                            ResultValue = 1240m,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BaseUnitId = 4,
+                            BaseValue = 1.24m,
+                            Created = new DateTime(2022, 7, 13, 2, 11, 43, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 2,
+                            ResultValue = 1240m,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BaseUnitId = 4,
+                            BaseValue = 1.24m,
+                            Created = new DateTime(2022, 7, 13, 12, 1, 32, 0, DateTimeKind.Unspecified),
+                            ResultUnitId = 2,
+                            ResultValue = 1240m,
+                            UserId = 1
                         });
                 });
 
@@ -1070,6 +1129,51 @@ namespace SmartUnitCalculator.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SmartUnitCalculator.Database.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Login")
+                        .IsUnique();
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Login = "Test01",
+                            Password = "5F4DCC3B5AA765D61D8327DEB882CF99"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Login = "Test02",
+                            Password = "5F4DCC3B5AA765D61D8327DEB882CF99"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Login = "Test03",
+                            Password = "5F4DCC3B5AA765D61D8327DEB882CF99"
+                        });
+                });
+
             modelBuilder.Entity("SmartUnitCalculator.Database.Models.Calculation", b =>
                 {
                     b.HasOne("SmartUnitCalculator.Database.Models.Unit", "BaseUnit")
@@ -1103,9 +1207,17 @@ namespace SmartUnitCalculator.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("SmartUnitCalculator.Database.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("BaseUnit");
 
                     b.Navigation("ResultUnit");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SmartUnitCalculator.Database.Models.Unit", b =>

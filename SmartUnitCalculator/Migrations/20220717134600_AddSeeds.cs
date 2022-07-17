@@ -5,47 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SmartUnitCalculator.Migrations
 {
-    public partial class AddBasicSeed : Migration
+    public partial class AddSeeds : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<decimal>(
-                name: "ResultValue",
-                table: "History",
-                type: "decimal(28,14)",
-                precision: 28,
-                scale: 14,
-                nullable: false,
-                oldClrType: typeof(decimal),
-                oldType: "decimal(38,19)",
-                oldPrecision: 38,
-                oldScale: 19);
-
-            migrationBuilder.AlterColumn<decimal>(
-                name: "BaseValue",
-                table: "History",
-                type: "decimal(28,14)",
-                precision: 28,
-                scale: 14,
-                nullable: false,
-                oldClrType: typeof(decimal),
-                oldType: "decimal(38,19)",
-                oldPrecision: 38,
-                oldScale: 19);
-
-            migrationBuilder.AlterColumn<decimal>(
-                name: "Multiplier",
-                table: "Calculations",
-                type: "decimal(28,14)",
-                precision: 28,
-                scale: 14,
-                nullable: true,
-                oldClrType: typeof(decimal),
-                oldType: "decimal(38,19)",
-                oldPrecision: 38,
-                oldScale: 19,
-                oldNullable: true);
-
             migrationBuilder.InsertData(
                 table: "UnitTypes",
                 columns: new[] { "Name", "Priority" },
@@ -55,6 +18,16 @@ namespace SmartUnitCalculator.Migrations
                     { "Objętość", 30 },
                     { "Pamięć", 40 },
                     { "Waga", 10 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Login", "Password" },
+                values: new object[,]
+                {
+                    { 1, "Test01", "5F4DCC3B5AA765D61D8327DEB882CF99" },
+                    { 2, "Test02", "5F4DCC3B5AA765D61D8327DEB882CF99" },
+                    { 3, "Test03", "5F4DCC3B5AA765D61D8327DEB882CF99" }
                 });
 
             migrationBuilder.InsertData(
@@ -209,13 +182,18 @@ namespace SmartUnitCalculator.Migrations
 
             migrationBuilder.InsertData(
                 table: "History",
-                columns: new[] { "Id", "BaseUnitId", "BaseValue", "Created", "ResultUnitId", "ResultValue" },
+                columns: new[] { "Id", "BaseUnitId", "BaseValue", "Created", "ResultUnitId", "ResultValue", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 3, 25m, new DateTime(2022, 7, 2, 12, 51, 2, 0, DateTimeKind.Unspecified), 5, 0.00025m },
-                    { 2, 3, 25m, new DateTime(2022, 7, 2, 12, 51, 59, 0, DateTimeKind.Unspecified), 4, 0.25m },
-                    { 3, 4, 1m, new DateTime(2022, 7, 3, 9, 30, 51, 0, DateTimeKind.Unspecified), 2, 1000m },
-                    { 4, 4, 1.24m, new DateTime(2022, 7, 4, 21, 11, 21, 0, DateTimeKind.Unspecified), 2, 1240m }
+                    { 1, 3, 25m, new DateTime(2022, 7, 2, 12, 51, 2, 0, DateTimeKind.Unspecified), 5, 0.00025m, 1 },
+                    { 2, 3, 25m, new DateTime(2022, 7, 2, 12, 51, 59, 0, DateTimeKind.Unspecified), 4, 0.25m, 1 },
+                    { 3, 4, 1m, new DateTime(2022, 7, 3, 9, 30, 51, 0, DateTimeKind.Unspecified), 2, 1000m, 3 },
+                    { 4, 4, 1.24m, new DateTime(2022, 7, 6, 11, 43, 3, 0, DateTimeKind.Unspecified), 2, 1240m, 1 },
+                    { 5, 4, 1.24m, new DateTime(2022, 7, 6, 12, 2, 22, 0, DateTimeKind.Unspecified), 2, 1240m, 2 },
+                    { 6, 4, 1.24m, new DateTime(2022, 7, 6, 12, 12, 59, 0, DateTimeKind.Unspecified), 2, 1240m, 2 },
+                    { 7, 4, 1.24m, new DateTime(2022, 7, 12, 12, 49, 44, 0, DateTimeKind.Unspecified), 2, 1240m, 2 },
+                    { 8, 4, 1.24m, new DateTime(2022, 7, 13, 2, 11, 43, 0, DateTimeKind.Unspecified), 2, 1240m, 3 },
+                    { 9, 4, 1.24m, new DateTime(2022, 7, 13, 12, 1, 32, 0, DateTimeKind.Unspecified), 2, 1240m, 1 }
                 });
         }
 
@@ -747,6 +725,31 @@ namespace SmartUnitCalculator.Migrations
                 keyValue: 4);
 
             migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "History",
+                keyColumn: "Id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
                 table: "Units",
                 keyColumn: "Id",
                 keyValue: 1);
@@ -852,6 +855,21 @@ namespace SmartUnitCalculator.Migrations
                 keyValue: 21);
 
             migrationBuilder.DeleteData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
                 table: "UnitTypes",
                 keyColumn: "Name",
                 keyValue: "Długość");
@@ -870,43 +888,6 @@ namespace SmartUnitCalculator.Migrations
                 table: "UnitTypes",
                 keyColumn: "Name",
                 keyValue: "Waga");
-
-            migrationBuilder.AlterColumn<decimal>(
-                name: "ResultValue",
-                table: "History",
-                type: "decimal(38,19)",
-                precision: 38,
-                scale: 19,
-                nullable: false,
-                oldClrType: typeof(decimal),
-                oldType: "decimal(28,14)",
-                oldPrecision: 28,
-                oldScale: 14);
-
-            migrationBuilder.AlterColumn<decimal>(
-                name: "BaseValue",
-                table: "History",
-                type: "decimal(38,19)",
-                precision: 38,
-                scale: 19,
-                nullable: false,
-                oldClrType: typeof(decimal),
-                oldType: "decimal(28,14)",
-                oldPrecision: 28,
-                oldScale: 14);
-
-            migrationBuilder.AlterColumn<decimal>(
-                name: "Multiplier",
-                table: "Calculations",
-                type: "decimal(38,19)",
-                precision: 38,
-                scale: 19,
-                nullable: true,
-                oldClrType: typeof(decimal),
-                oldType: "decimal(28,14)",
-                oldPrecision: 28,
-                oldScale: 14,
-                oldNullable: true);
         }
     }
 }

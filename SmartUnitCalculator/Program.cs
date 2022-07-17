@@ -1,13 +1,25 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SmartUnitCalculator.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAuthentication().AddCookie("SMC_Cookie", options =>
+{
+    options.Cookie.Name = "SMC_Cookie";
+    options.LoginPath = "/Index";
+    options.LogoutPath = "/LogIn";
+});
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SUCDB_W")
     ?? throw new InvalidOperationException("Connection string not found.")));
+builder.Services.ConfigureApplicationCookie(option => 
+{ 
+    option.LoginPath = "/Index"; 
+    option.LogoutPath = "/logIn"; 
+});
 
 var app = builder.Build();
 
@@ -24,6 +36,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
