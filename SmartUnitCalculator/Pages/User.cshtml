@@ -4,29 +4,43 @@
     ViewData["Title"] = "User - Smart Unit Calculator";
 }
 
-<h1>User Panel</h1>
+@if (@User.Identity.IsAuthenticated){
+<h1 class="mb-5">Witaj @User.Identity.Name</h1>
+} else {
+    <div class="container">
+        <div class="row">
+             <a class="btn btn-primary" asp-page="/LogIn">Zaloguj się</a>
+        </div>
+        <div class="row">
+            <a class="btn btn-primary" asp-page="Regster">Zarejestruj się</a>
+        </div>
+    </div>
+}
 
-<h3>Witaj @User.Identity.Name</h3>
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <h3>Historia</h3>
+        <table class="table text-white table-responsive">
+        @*@foreach (var history in Model.Lists.History)
+        {
+            <tr>
+               <td>@history.Created</td> 
+                <td>@history.BaseUnit</td>  
+                <td>@history.BaseValue</td>  
+                <td>@history.ResultUnit</td> 
+                <td>@history.ResultValue</td> 
+            </tr>
+        }*@
+        </table>
+         </div>
+ 
+        <div class="col">
+            <h3 class="mb-3">Ustawienia użytkownika </h3>
+            <div class="mr-5 mb-3"><button asp-page="ChangeUserName" class="btn btn-primary mr-5" >Zmień nazwę użytkwnika</button> </div>
+            <div class="mr-5 mb-3"><button asp-page="ChangePassword" class="btn btn-primary mr-4">Zmień hasło</button></div>
+            <div class="mr-5 mb-3"><button asp-page="Logout" class="btn btn-primary mr-2">Wyloguj się</button></div>
 
-<div class="col-sm-4">
-    <h4>Historia</h4>
-    <table class="table text-white">
-@*@foreach (var history in Model.Lists.History)
-{
-    <tr>
-       <td>@history.Created</td> 
-        <td>@history.BaseUnit</td>  
-        <td>@history.BaseValue</td>  
-        <td>@history.ResultUnit</td> 
-        <td>@history.ResultValue</td> 
-    </tr>
-}*@
-</table>
+        </div> 
+    </div>
 </div>
-
-
-<h3 class="mb-3">Ustawienia użytkownika </h3>
-<div class="mr-5 mb-3"><button asp-page="ChangeUserName" class="btn btn-primary mr-5" >Zmień nazwę użytkwnika</button> </div>
-<div class="mr-5 mb-3"><button asp-page="ChangePassword" class="btn btn-primary mr-4">Zmień hasło</button></div>
-<div class="mr-5 mb-3"><button asp-page="" class="btn btn-primary mr-3">Przypomnij hasło</button></div>
-<div class="mr-5 mb-3"><button asp-page="Logout" class="btn btn-primary mr-2">Wyloguj się</button></div>
