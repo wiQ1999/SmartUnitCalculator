@@ -6,12 +6,12 @@
 
 <h1>User Panel</h1>
 
-<h3>Witaj, #User Name#</h3>
+<h3>Witaj @User.Identity.Name</h3>
 
 <div class="col-sm-4">
     <h4>Historia</h4>
     <table class="table text-white">
-@foreach (var history in Model.Lists.History)
+@*@foreach (var history in Model.Lists.History)
 {
     <tr>
        <td>@history.Created</td> 
@@ -20,7 +20,7 @@
         <td>@history.ResultUnit</td> 
         <td>@history.ResultValue</td> 
     </tr>
-}
+}*@
 </table>
 </div>
 

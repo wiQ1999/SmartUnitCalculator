@@ -10,10 +10,12 @@
             <tr>
                 <td scoop="row">Username</td>
                 <td scoop="row"><input type="text" asp-for="Login.Login" /></td>
+                <span class="text-danger" asp-validation-for="Login.Login"></span>
             </tr>
             <tr>
                 <td scoop="row">Password</td>
                 <td scoop="row"><input type="password" asp-for="Login.Password" /></td>
+                <span class="text-danger" asp-validation-for="Login.Password"></span>
             </tr>
             <tr>
                 <td scoop="row">&nbsp;</td>
