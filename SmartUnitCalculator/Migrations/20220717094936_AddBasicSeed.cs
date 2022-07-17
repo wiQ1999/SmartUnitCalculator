@@ -9,6 +9,43 @@ namespace SmartUnitCalculator.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<decimal>(
+                name: "ResultValue",
+                table: "History",
+                type: "decimal(28,14)",
+                precision: 28,
+                scale: 14,
+                nullable: false,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(38,19)",
+                oldPrecision: 38,
+                oldScale: 19);
+
+            migrationBuilder.AlterColumn<decimal>(
+                name: "BaseValue",
+                table: "History",
+                type: "decimal(28,14)",
+                precision: 28,
+                scale: 14,
+                nullable: false,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(38,19)",
+                oldPrecision: 38,
+                oldScale: 19);
+
+            migrationBuilder.AlterColumn<decimal>(
+                name: "Multiplier",
+                table: "Calculations",
+                type: "decimal(28,14)",
+                precision: 28,
+                scale: 14,
+                nullable: true,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(38,19)",
+                oldPrecision: 38,
+                oldScale: 19,
+                oldNullable: true);
+
             migrationBuilder.InsertData(
                 table: "UnitTypes",
                 columns: new[] { "Name", "Priority" },
@@ -45,9 +82,7 @@ namespace SmartUnitCalculator.Migrations
                     { 18, "maegabit", 50, "Mb", "Pamięć" },
                     { 19, "megabajt", 60, "MB", "Pamięć" },
                     { 20, "gigabit", 70, "Gb", "Pamięć" },
-                    { 21, "gigabajt", 80, "GB", "Pamięć" },
-                    { 22, "terabit", 90, "Tb", "Pamięć" },
-                    { 23, "terabajt", 100, "TB", "Pamięć" }
+                    { 21, "gigabajt", 80, "GB", "Pamięć" }
                 });
 
             migrationBuilder.InsertData(
@@ -115,37 +150,37 @@ namespace SmartUnitCalculator.Migrations
                     { 51, 14, 0.000000125m, 19 },
                     { 52, 14, 0.000000001m, 20 },
                     { 53, 14, 0.000000000125m, 21 },
-                    { 54, 14, 0.000000000001m, 22 },
-                    { 55, 14, 0.000000000000125m, 23 },
-                    { 56, 15, 8m, 14 },
-                    { 57, 15, 0.008m, 16 },
-                    { 58, 15, 0.001m, 17 },
-                    { 59, 15, 0.000008m, 18 },
-                    { 60, 15, 0.000001m, 19 },
-                    { 61, 15, 0.000000008m, 20 },
-                    { 62, 15, 0.000000001m, 21 },
-                    { 63, 15, 0.000000000008m, 22 },
-                    { 64, 15, 0.000000000001m, 23 },
-                    { 65, 16, 1000m, 14 },
-                    { 66, 16, 125m, 15 },
-                    { 67, 16, 0.125m, 17 },
-                    { 68, 16, 0.001m, 18 },
-                    { 69, 16, 0.000125m, 19 },
-                    { 70, 16, 0.000001m, 20 },
-                    { 71, 16, 0.000000125m, 21 },
-                    { 72, 16, 0.000000001m, 22 },
-                    { 73, 16, 0.000000000125m, 23 },
-                    { 74, 17, 8000m, 14 },
-                    { 75, 17, 1000m, 15 },
-                    { 76, 17, 8m, 16 },
-                    { 77, 17, 0.008m, 18 },
-                    { 78, 17, 0.001m, 19 },
-                    { 79, 17, 0.000008m, 20 },
-                    { 80, 17, 0.000001m, 21 },
-                    { 81, 17, 0.000000008m, 22 },
-                    { 82, 17, 0.000000001m, 23 },
-                    { 83, 18, 1000000m, 14 },
-                    { 84, 18, 125000m, 15 }
+                    { 54, 15, 8m, 14 },
+                    { 55, 15, 0.008m, 16 },
+                    { 56, 15, 0.001m, 17 },
+                    { 57, 15, 0.000008m, 18 },
+                    { 58, 15, 0.000001m, 19 },
+                    { 59, 15, 0.000000008m, 20 },
+                    { 60, 15, 0.000000001m, 21 },
+                    { 61, 16, 1000m, 14 },
+                    { 62, 16, 125m, 15 },
+                    { 63, 16, 0.125m, 17 },
+                    { 64, 16, 0.001m, 18 },
+                    { 65, 16, 0.000125m, 19 },
+                    { 66, 16, 0.000001m, 20 },
+                    { 67, 16, 0.000000125m, 21 },
+                    { 68, 17, 8000m, 14 },
+                    { 69, 17, 1000m, 15 },
+                    { 70, 17, 8m, 16 },
+                    { 71, 17, 0.008m, 18 },
+                    { 72, 17, 0.001m, 19 },
+                    { 73, 17, 0.000008m, 20 },
+                    { 74, 17, 0.000001m, 21 },
+                    { 75, 18, 1000000m, 14 },
+                    { 76, 18, 125000m, 15 },
+                    { 77, 18, 1000m, 16 },
+                    { 78, 18, 125m, 17 },
+                    { 79, 18, 0.125m, 19 },
+                    { 80, 18, 0.001m, 20 },
+                    { 81, 19, 8000000m, 14 },
+                    { 82, 19, 1000000m, 15 },
+                    { 83, 19, 8000m, 16 },
+                    { 84, 19, 1000m, 17 }
                 });
 
             migrationBuilder.InsertData(
@@ -153,65 +188,23 @@ namespace SmartUnitCalculator.Migrations
                 columns: new[] { "Id", "BaseUnitId", "Multiplier", "ResultUnitId" },
                 values: new object[,]
                 {
-                    { 85, 18, 1000m, 16 },
-                    { 86, 18, 125m, 17 },
-                    { 87, 18, 0.125m, 19 },
-                    { 88, 18, 0.001m, 20 },
-                    { 89, 18, 0.000125m, 21 },
-                    { 90, 18, 0.000001m, 22 },
-                    { 91, 18, 0.000000125m, 23 },
-                    { 92, 19, 8000000m, 14 },
-                    { 93, 19, 1000000m, 15 },
-                    { 94, 19, 8000m, 16 },
-                    { 95, 19, 1000m, 17 },
-                    { 96, 19, 8m, 18 },
-                    { 97, 19, 0.008m, 20 },
-                    { 98, 19, 0.001m, 21 },
-                    { 99, 19, 0.000008m, 22 },
-                    { 100, 19, 0.000001m, 23 },
-                    { 101, 20, 1000000000m, 14 },
-                    { 102, 20, 125000000m, 15 },
-                    { 103, 20, 1000000m, 16 },
-                    { 104, 20, 125000m, 17 },
-                    { 105, 20, 1000m, 18 },
-                    { 106, 20, 125m, 19 },
-                    { 107, 20, 0.125m, 21 },
-                    { 108, 20, 0.001m, 22 },
-                    { 109, 20, 0.000125m, 23 },
-                    { 110, 21, 8000000000m, 14 },
-                    { 111, 21, 1000000000m, 15 },
-                    { 112, 21, 8000000m, 16 },
-                    { 113, 21, 1000000m, 17 },
-                    { 114, 21, 8000m, 18 },
-                    { 115, 21, 1000m, 19 },
-                    { 116, 21, 8m, 20 },
-                    { 117, 21, 0.008m, 22 },
-                    { 118, 21, 0.001m, 23 },
-                    { 119, 22, 1000000000000m, 14 },
-                    { 120, 22, 125000000000m, 15 },
-                    { 121, 22, 10000000000m, 16 },
-                    { 122, 22, 125000000m, 17 },
-                    { 123, 22, 1000000m, 18 },
-                    { 124, 22, 125000m, 19 },
-                    { 125, 22, 1000m, 20 },
-                    { 126, 22, 125m, 21 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Calculations",
-                columns: new[] { "Id", "BaseUnitId", "Multiplier", "ResultUnitId" },
-                values: new object[,]
-                {
-                    { 127, 22, 0.125m, 23 },
-                    { 128, 23, 8000000000000m, 14 },
-                    { 129, 23, 1000000000000m, 15 },
-                    { 130, 23, 8000000000m, 16 },
-                    { 131, 23, 1000000000m, 17 },
-                    { 132, 23, 8000000m, 18 },
-                    { 133, 23, 1000000m, 19 },
-                    { 134, 23, 8000m, 20 },
-                    { 135, 23, 1000m, 21 },
-                    { 136, 23, 8m, 22 }
+                    { 85, 19, 8m, 18 },
+                    { 86, 19, 0.008m, 20 },
+                    { 87, 19, 0.001m, 21 },
+                    { 88, 20, 1000000000m, 14 },
+                    { 89, 20, 125000000m, 15 },
+                    { 90, 20, 1000000m, 16 },
+                    { 91, 20, 125000m, 17 },
+                    { 92, 20, 1000m, 18 },
+                    { 93, 20, 125m, 19 },
+                    { 94, 20, 0.125m, 21 },
+                    { 95, 21, 8000000000m, 14 },
+                    { 96, 21, 1000000000m, 15 },
+                    { 97, 21, 8000000m, 16 },
+                    { 98, 21, 1000000m, 17 },
+                    { 99, 21, 8000m, 18 },
+                    { 100, 21, 1000m, 19 },
+                    { 101, 21, 8m, 20 }
                 });
 
             migrationBuilder.InsertData(
@@ -734,181 +727,6 @@ namespace SmartUnitCalculator.Migrations
                 keyValue: 101);
 
             migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 102);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 103);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 104);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 105);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 106);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 107);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 108);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 109);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 110);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 111);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 112);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 113);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 114);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 115);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 116);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 117);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 118);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 119);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 120);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 121);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 122);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 123);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 124);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 125);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 126);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 127);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 128);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 129);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 130);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 131);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 132);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 133);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 134);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 135);
-
-            migrationBuilder.DeleteData(
-                table: "Calculations",
-                keyColumn: "Id",
-                keyValue: 136);
-
-            migrationBuilder.DeleteData(
                 table: "History",
                 keyColumn: "Id",
                 keyValue: 1);
@@ -1034,16 +852,6 @@ namespace SmartUnitCalculator.Migrations
                 keyValue: 21);
 
             migrationBuilder.DeleteData(
-                table: "Units",
-                keyColumn: "Id",
-                keyValue: 22);
-
-            migrationBuilder.DeleteData(
-                table: "Units",
-                keyColumn: "Id",
-                keyValue: 23);
-
-            migrationBuilder.DeleteData(
                 table: "UnitTypes",
                 keyColumn: "Name",
                 keyValue: "Długość");
@@ -1062,6 +870,43 @@ namespace SmartUnitCalculator.Migrations
                 table: "UnitTypes",
                 keyColumn: "Name",
                 keyValue: "Waga");
+
+            migrationBuilder.AlterColumn<decimal>(
+                name: "ResultValue",
+                table: "History",
+                type: "decimal(38,19)",
+                precision: 38,
+                scale: 19,
+                nullable: false,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(28,14)",
+                oldPrecision: 28,
+                oldScale: 14);
+
+            migrationBuilder.AlterColumn<decimal>(
+                name: "BaseValue",
+                table: "History",
+                type: "decimal(38,19)",
+                precision: 38,
+                scale: 19,
+                nullable: false,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(28,14)",
+                oldPrecision: 28,
+                oldScale: 14);
+
+            migrationBuilder.AlterColumn<decimal>(
+                name: "Multiplier",
+                table: "Calculations",
+                type: "decimal(38,19)",
+                precision: 38,
+                scale: 19,
+                nullable: true,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(28,14)",
+                oldPrecision: 28,
+                oldScale: 14,
+                oldNullable: true);
         }
     }
 }
