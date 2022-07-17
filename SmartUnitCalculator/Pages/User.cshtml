@@ -8,16 +8,25 @@
 
 <h3>Witaj, #User Name#</h3>
 
-<h3>Historia</h3>
-<table class="table">
+<div class="col-sm-4">
+    <h4>Historia</h4>
+    <table class="table text-white">
+@foreach (var history in Model.Lists.History)
+{
     <tr>
-        <td></td>
+       <td>@history.Created</td> 
+        <td>@history.BaseUnit</td>  
+        <td>@history.BaseValue</td>  
+        <td>@history.ResultUnit</td> 
+        <td>@history.ResultValue</td> 
     </tr>
+}
 </table>
+</div>
 
 
 <h3 class="mb-3">Ustawienia użytkownika </h3>
-<div class="mr-5 mb-3"><button asp-page="ChangeUserName" class="btn btn-primary mr-5" >Zmień nazwę użtykownika</button> </div>
+<div class="mr-5 mb-3"><button asp-page="ChangeUserName" class="btn btn-primary mr-5" >Zmień nazwę użytkwnika</button> </div>
 <div class="mr-5 mb-3"><button asp-page="ChangePassword" class="btn btn-primary mr-4">Zmień hasło</button></div>
 <div class="mr-5 mb-3"><button asp-page="" class="btn btn-primary mr-3">Przypomnij hasło</button></div>
 <div class="mr-5 mb-3"><button asp-page="Logout" class="btn btn-primary mr-2">Wyloguj się</button></div>
